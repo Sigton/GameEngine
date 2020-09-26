@@ -1,3 +1,3 @@
 #pragma once
 
-#include "GameEngine/EntryPoint.h"
+#include "GameEngine/Application.h"
