@@ -10,7 +10,6 @@ namespace GameEngine {
 
 	Application::Application()
 	{
-		GE_CORE_TRACE("Application has opened");
 	}
 
 	Application::~Application()
