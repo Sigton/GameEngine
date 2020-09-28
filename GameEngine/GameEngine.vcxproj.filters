@@ -40,7 +40,11 @@
     <ClInclude Include="src\GameEngine\MouseCodes.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameEngine\Window.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\gepch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -49,6 +53,10 @@
     <ClCompile Include="src\GameEngine\Log.cpp">
       <Filter>GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Window.cpp">
+      <Filter>GameEngine</Filter>
+    </ClCompile>
     <ClCompile Include="src\gepch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>
