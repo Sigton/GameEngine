@@ -144,7 +144,12 @@
     <ClInclude Include="src\GameEngine\Application.h" />
     <ClInclude Include="src\GameEngine\Core.h" />
     <ClInclude Include="src\GameEngine\EntryPoint.h" />
+    <ClInclude Include="src\GameEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\GameEngine\Events\Event.h" />
+    <ClInclude Include="src\GameEngine\Events\KeyEvent.h" />
+    <ClInclude Include="src\GameEngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\GameEngine\KeyCodes.h" />
+    <ClInclude Include="src\GameEngine\Log.h" />
     <ClInclude Include="src\gepch.h" />
   </ItemGroup>
   <ItemGroup>
