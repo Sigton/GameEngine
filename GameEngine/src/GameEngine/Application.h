@@ -7,6 +7,8 @@
 #include "GameEngine/Events/Event.h"
 #include "GameEngine/Events/ApplicationEvent.h"
 
+#include "GameEngine/LayerStack.h"
+
 namespace GameEngine {
 
 	class Application
@@ -16,6 +18,9 @@ namespace GameEngine {
 		virtual ~Application();
 	
 		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
 
 		Window& GetWindow() { return *m_Window; }
 
@@ -31,6 +36,8 @@ namespace GameEngine {
 		std::unique_ptr<Window> m_Window;
 
 		bool m_Running = true;
+
+		LayerStack m_LayerStack;
 
 	private:
 		static Application* s_Instance;

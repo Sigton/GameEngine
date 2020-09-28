@@ -53,6 +53,8 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\gepch.h" />
+    <ClInclude Include="src\GameEngine\Layer.h" />
+    <ClInclude Include="src\GameEngine\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -68,5 +70,7 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\gepch.cpp" />
+    <ClCompile Include="src\GameEngine\Layer.cpp" />
+    <ClCompile Include="src\GameEngine\LayerStack.cpp" />
   </ItemGroup>
 </Project>

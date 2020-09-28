@@ -149,6 +149,8 @@
     <ClInclude Include="src\GameEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\GameEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\GameEngine\KeyCodes.h" />
+    <ClInclude Include="src\GameEngine\Layer.h" />
+    <ClInclude Include="src\GameEngine\LayerStack.h" />
     <ClInclude Include="src\GameEngine\Log.h" />
     <ClInclude Include="src\GameEngine\MouseCodes.h" />
     <ClInclude Include="src\GameEngine\Window.h" />
@@ -157,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp" />
+    <ClCompile Include="src\GameEngine\Layer.cpp" />
+    <ClCompile Include="src\GameEngine\LayerStack.cpp" />
     <ClCompile Include="src\GameEngine\Log.cpp" />
     <ClCompile Include="src\GameEngine\Window.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

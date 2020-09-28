@@ -31,6 +31,24 @@ namespace GameEngine {
 		dispatcher.Dispatch<WindowResizeEvent>(GE_BIND_EVENT_FN(Application::OnWindowResize));
 
 		// let each layer process the event until the event gets marked as handled
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); it++)
+		{
+			if (e.Handled)
+				break;
+			(*it)->OnEvent(e);
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -55,6 +73,10 @@ namespace GameEngine {
 	{
 		while (m_Running)
 		{
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
 			m_Window->OnUpdate();
 		}
 	}
