@@ -1,12 +1,16 @@
 #include "gepch.h"
-#include "Application.h"
+#include "GameEngine/Application.h"
+
+#include "GameEngine/Core.h"
+
+#include "GameEngine/Log.h"
 
 
 namespace GameEngine {
 
 	Application::Application()
 	{
-
+		GE_CORE_TRACE("Application has opened");
 	}
 
 	Application::~Application()
