@@ -27,8 +27,8 @@ namespace GameEngine {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(Application::OnWindowClose);
-		dispatcher.Dispatch<WindowResizeEvent>(Application::OnWindowResize);
+		dispatcher.Dispatch<WindowCloseEvent>(GE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(GE_BIND_EVENT_FN(Application::OnWindowResize));
 
 		// let each layer process the event until the event gets marked as handled
 	}

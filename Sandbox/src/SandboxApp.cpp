@@ -7,7 +7,6 @@ class SandboxApp : public GameEngine::Application
 public:
 	SandboxApp()
 	{
-		GE_TRACE("Example of client logger working");
 	}
 };
 
