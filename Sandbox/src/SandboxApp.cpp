@@ -7,7 +7,6 @@ class SandboxApp : public GameEngine::Application
 public:
 	SandboxApp()
 	{
-
 	}
 };
 

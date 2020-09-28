@@ -15,6 +15,7 @@ project "Sandbox"
 
 	includedirs
 	{
+		"%{wks.location}/GameEngine/vendor/spdlog/include",
 		"%{wks.location}/GameEngine/src",
 		"%{wks.location}/GameEngine/vendor",
 	}
