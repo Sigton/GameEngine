@@ -8,6 +8,7 @@
 #include "GameEngine/Events/ApplicationEvent.h"
 
 #include "GameEngine/LayerStack.h"
+#include "GameEngine/ImGui/ImGuiLayer.h"
 
 namespace GameEngine {
 
@@ -34,6 +35,7 @@ namespace GameEngine {
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_Running = true;
 
