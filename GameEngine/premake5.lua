@@ -26,12 +26,16 @@ project "GameEngine"
 	{
 		"src",
 		"vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"ImGui",
+		"Glad",
 		"opengl32.lib"
 	}
 
