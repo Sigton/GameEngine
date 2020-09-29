@@ -33,6 +33,34 @@ namespace GameEngine {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
+
+		// define geometry and indices
+		float vertices[3 * 3] = {
+			-0.5f,	-0.5f,	 0.0f,
+			 0.5f,	-0.5f,	 0.0f,
+			 0.0f,	 0.5f,	 0.0f
+		};
+
+		unsigned int indices[3] = {
+			0, 1, 2
+		};
+
+		// gen vertex array
+		glGenVertexArrays(1, &m_VertexArray);
+		glBindVertexArray(m_VertexArray);
+
+		glGenBuffers(1, &m_VertexBuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+
+		glGenBuffers(1, &m_IndexBuffer);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	}
 
 	Application::~Application()
@@ -90,7 +118,15 @@ namespace GameEngine {
 		while (m_Running)
 		{
 
+			// CLEAR FROM LAST FRAME
+			glClearColor(0.2f, 0.2f, 0.2f, 1);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			// SUBMIT TO RENDERER
+			glBindVertexArray(m_VertexArray);
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+
+			// UPDATE LAYERS
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
