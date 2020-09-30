@@ -29,6 +29,7 @@ namespace GameEngine {
 
 	private:
 		GLFWwindow* m_Window;
+		std::unique_ptr<GraphicsContext> m_GraphicsContext;
 
 		struct WindowData
 		{

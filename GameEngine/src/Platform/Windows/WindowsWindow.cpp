@@ -7,6 +7,10 @@
 #include "GameEngine/Events/KeyEvent.h"
 #include "GameEngine/Events/MouseEvent.h"
 
+#include "GameEngine/Renderer/Renderer.h"
+
+#include "Platform/OpenGL/OpenGLContext.h"
+
 namespace GameEngine {
 
 	static void GLFWErrorCallback(int error, const char* description)
@@ -38,7 +42,8 @@ namespace GameEngine {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
-		glfwMakeContextCurrent(m_Window);
+		m_Context = GraphicsContext::Create(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
@@ -144,7 +149,7 @@ namespace GameEngine {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
