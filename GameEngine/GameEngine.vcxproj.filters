@@ -66,6 +66,8 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\GameEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\GameEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -95,5 +97,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\GameEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

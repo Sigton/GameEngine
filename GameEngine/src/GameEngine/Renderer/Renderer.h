@@ -5,6 +5,7 @@
 #include "GameEngine/Renderer/GraphicsContext.h"
 #include "GameEngine/Renderer/RendererAPI.h"
 #include "GameEngine/Renderer/Buffer.h"
+#include "GameEngine/Renderer/Shader.h"
 
 namespace GameEngine {
 

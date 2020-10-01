@@ -51,6 +51,31 @@ namespace GameEngine {
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 
 		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(unsigned int));
+
+		std::string vertexSource = R"(
+
+#version 330 core
+
+layout(location = 0) in vec3 a_Position;
+
+void main()
+{
+	gl_Position = vec4(a_Position, 1.0);
+}
+)";
+
+		std::string fragmentSource = R"(
+
+#version 330 core
+
+layout(location = 0) out vec4 color;
+
+void main()
+{
+	color = vec4(0.8, 0.2, 0.2, 1.0);
+}
+)";
+		m_Shader = Shader::Create(vertexSource, fragmentSource);
 	}
 
 	Application::~Application()
@@ -113,8 +138,9 @@ namespace GameEngine {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			// SUBMIT TO RENDERER
+			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			// UPDATE LAYERS
 
