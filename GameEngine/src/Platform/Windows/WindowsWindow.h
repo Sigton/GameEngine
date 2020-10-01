@@ -2,6 +2,10 @@
 
 #include "GameEngine/Window.h"
 
+#include "GameEngine/Renderer/Renderer.h"
+
+#include "Platform/OpenGL/OpenGLContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace GameEngine {
@@ -29,7 +33,7 @@ namespace GameEngine {
 
 	private:
 		GLFWwindow* m_Window;
-		std::unique_ptr<GraphicsContext> m_GraphicsContext;
+		std::unique_ptr<GraphicsContext> m_Context;
 
 		struct WindowData
 		{

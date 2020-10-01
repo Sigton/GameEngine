@@ -7,9 +7,6 @@
 #include "GameEngine/Events/KeyEvent.h"
 #include "GameEngine/Events/MouseEvent.h"
 
-#include "GameEngine/Renderer/Renderer.h"
-
-#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace GameEngine {
 

@@ -154,7 +154,13 @@
     <ClInclude Include="src\GameEngine\LayerStack.h" />
     <ClInclude Include="src\GameEngine\Log.h" />
     <ClInclude Include="src\GameEngine\MouseCodes.h" />
+    <ClInclude Include="src\GameEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\GameEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\GameEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\GameEngine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\GameEngine\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\gepch.h" />
   </ItemGroup>
@@ -165,7 +171,13 @@
     <ClCompile Include="src\GameEngine\Layer.cpp" />
     <ClCompile Include="src\GameEngine\LayerStack.cpp" />
     <ClCompile Include="src\GameEngine\Log.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\GameEngine\Window.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

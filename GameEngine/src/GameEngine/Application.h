@@ -10,6 +10,8 @@
 #include "GameEngine/LayerStack.h"
 #include "GameEngine/ImGui/ImGuiLayer.h"
 
+#include "GameEngine/Renderer/Renderer.h"
+
 namespace GameEngine {
 
 	class Application
@@ -41,7 +43,9 @@ namespace GameEngine {
 
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 
 	private:
 		static Application* s_Instance;
