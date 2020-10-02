@@ -6,7 +6,6 @@
 #include "GameEngine/Log.h"
 
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 
 namespace GameEngine {
@@ -36,24 +35,20 @@ namespace GameEngine {
 		};
 
 		// gen vertex array
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		m_VertexArray = VertexArray::Create();
 
 		m_VertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
 
 		BufferLayout layout = {
-			{ ShaderDataType::Float3, "a_Position"},
-			{ ShaderDataType::Float4, "a_Color" }
+			{ ShaderDataType::Float3, "a_Position"}
 		};
 		m_VertexBuffer->SetLayout(layout);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
 		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(unsigned int));
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		std::string vertexSource = R"(
-
 #version 330 core
 
 layout(location = 0) in vec3 a_Position;
@@ -65,7 +60,6 @@ void main()
 )";
 
 		std::string fragmentSource = R"(
-
 #version 330 core
 
 layout(location = 0) out vec4 color;
@@ -139,7 +133,7 @@ void main()
 
 			// SUBMIT TO RENDERER
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			// UPDATE LAYERS

@@ -159,10 +159,12 @@
     <ClInclude Include="src\GameEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\GameEngine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\GameEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\GameEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\GameEngine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\gepch.h" />
   </ItemGroup>
@@ -178,10 +180,12 @@
     <ClCompile Include="src\GameEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\GameEngine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\GameEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\GameEngine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\GameEngine\Window.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\gepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
