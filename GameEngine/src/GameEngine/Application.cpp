@@ -127,14 +127,23 @@ void main()
 		while (m_Running)
 		{
 
+			
 			// CLEAR FROM LAST FRAME
-			glClearColor(0.2f, 0.2f, 0.2f, 1);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			RenderCommand::SetClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1));
+			RenderCommand::Clear();
+
+
+			// BEGIN RENDERING SCENE
+			Renderer::BeginScene();
 
 			// SUBMIT TO RENDERER
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			// END RENDERING SCENE
+			Renderer::EndScene();
+
+
 
 			// UPDATE LAYERS
 

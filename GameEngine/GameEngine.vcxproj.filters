@@ -792,6 +792,8 @@
     <ClInclude Include="vendor\glm\glm\virtrev\xstream.hpp">
       <Filter>vendor\glm\glm\virtrev</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameEngine\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -851,5 +853,7 @@
     <ClCompile Include="src\gepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
