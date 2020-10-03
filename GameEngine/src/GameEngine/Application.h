@@ -11,6 +11,7 @@
 #include "GameEngine/ImGui/ImGuiLayer.h"
 
 #include "GameEngine/Renderer/Renderer.h"
+#include "GameEngine/Renderer/PerspectiveCamera.h"
 
 namespace GameEngine {
 
@@ -42,12 +43,6 @@ namespace GameEngine {
 		bool m_Running = true;
 
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-		std::shared_ptr<Shader> m_Shader;
-
 	private:
 		static Application* s_Instance;
 

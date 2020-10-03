@@ -20,54 +20,6 @@ namespace GameEngine {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
-		// define geometry and indices
-		float vertices[3 * 3] = {
-			-0.5f,	-0.5f,	 0.0f,
-			 0.5f,	-0.5f,	 0.0f,
-			 0.0f,	 0.5f,	 0.0f
-		};
-
-		unsigned int indices[3] = {
-			0, 1, 2
-		};
-
-		// gen vertex array
-		m_VertexArray = VertexArray::Create();
-
-		m_VertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
-
-		BufferLayout layout = {
-			{ ShaderDataType::Float3, "a_Position"}
-		};
-		m_VertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
-
-		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices)/sizeof(unsigned int));
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
-
-		std::string vertexSource = R"(
-#version 330 core
-
-layout(location = 0) in vec3 a_Position;
-
-void main()
-{
-	gl_Position = vec4(a_Position, 1.0);
-}
-)";
-
-		std::string fragmentSource = R"(
-#version 330 core
-
-layout(location = 0) out vec4 color;
-
-void main()
-{
-	color = vec4(0.8, 0.2, 0.2, 1.0);
-}
-)";
-		m_Shader = Shader::Create(vertexSource, fragmentSource);
 	}
 
 	Application::~Application()
@@ -124,25 +76,6 @@ void main()
 	{
 		while (m_Running)
 		{
-
-			
-			// CLEAR FROM LAST FRAME
-			RenderCommand::SetClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1));
-			RenderCommand::Clear();
-
-
-			// BEGIN RENDERING SCENE
-			Renderer::BeginScene();
-
-			// SUBMIT TO RENDERER
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
-
-			// END RENDERING SCENE
-			Renderer::EndScene();
-
-
-
 			// UPDATE LAYERS
 
 			for (Layer* layer : m_LayerStack)
