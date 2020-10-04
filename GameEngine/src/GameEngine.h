@@ -12,6 +12,8 @@
 
 #include "GameEngine/ImGui/ImGuiLayer.h"
 
+#include "GameEngine/Transform.h"
+
 // ---Renderer------------------------
 #include "GameEngine/Renderer/Renderer.h"
 #include "GameEngine/Renderer/RenderCommand.h"
