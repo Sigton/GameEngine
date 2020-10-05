@@ -5,7 +5,7 @@ namespace GameEngine {
 
 	void Renderer::Init()
 	{
-
+		RenderCommand::Init();
 	}
 
 	void Renderer::Shutdown()
