@@ -28,6 +28,8 @@ namespace GameEngine {
 	{
 		uint32_t count = vertexArray->GetIndexBuffer()->GetCount();
 		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr);
+
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 }

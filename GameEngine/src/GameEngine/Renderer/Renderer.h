@@ -5,6 +5,7 @@
 #include "GameEngine/Renderer/GraphicsContext.h"
 #include "GameEngine/Renderer/RenderCommand.h"
 #include "GameEngine/Renderer/Shader.h"
+#include "GameEngine/Renderer/Texture.h"
 
 #include "GameEngine/Renderer/PerspectiveCamera.h"
 
