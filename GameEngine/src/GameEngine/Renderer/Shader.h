@@ -24,7 +24,8 @@ namespace GameEngine {
 		virtual void SetMat4(const std::string& name, const glm::mat4& value) = 0;
 
 
-		static std::shared_ptr<Shader> Create(const std::string& vertexSource, const std::string& fragmentSource);
+		static std::shared_ptr<Shader> Create(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource);
+		static std::shared_ptr<Shader> Create(const std::string& path);
 	};
 
 }

@@ -7,12 +7,21 @@
 
 namespace GameEngine {
 
-	std::shared_ptr<Shader> Shader::Create(const std::string& vertexSource, const std::string& fragmentSource)
+	std::shared_ptr<Shader> Shader::Create(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:		GE_CORE_ASSERT(false, "RendererAPI::None is not currently supported"); return nullptr;
-		case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(vertexSource, fragmentSource);
+		case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(name, vertexSource, fragmentSource);
+		}
+	}
+
+	std::shared_ptr<Shader> Shader::Create(const std::string& path)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:		GE_CORE_ASSERT(false, "RendererAPI::None is not currently supported"); return nullptr;
+		case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(path);
 		}
 	}
 
