@@ -6,6 +6,7 @@ namespace GameEngine {
 
 	class Transform
 	{
+	public:
 		Transform();
 		Transform(const glm::vec3& position);
 		Transform(const glm::vec3& position, const glm::vec3& rotation);

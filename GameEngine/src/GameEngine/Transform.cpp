@@ -33,7 +33,7 @@ namespace GameEngine {
 	void Transform::RecalculateMatrix()
 	{
 		glm::mat4 pos = glm::translate(glm::mat4(1), m_Position);
-		glm::mat4 rot = glm::orientate4(m_Rotation);
+		glm::mat4 rot = glm::orientate4(glm::vec3(m_Rotation.x, m_Rotation.z, m_Rotation.y));
 		glm::mat4 scale = glm::scale(glm::mat4(1), m_Scale);
 
 		m_Matrix = pos * rot * scale;

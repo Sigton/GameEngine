@@ -21,7 +21,7 @@ namespace GameEngine {
 
 	void PerspectiveCamera::RecalculateViewMatrix()
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1), m_Position) * glm::orientate4(m_Rotation);
+		glm::mat4 transform = glm::translate(glm::mat4(1), m_Position) * glm::orientate4(glm::vec3(m_Rotation.x, m_Rotation.z, m_Rotation.y));
 
 		m_ViewMatrix = glm::inverse(transform);
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;

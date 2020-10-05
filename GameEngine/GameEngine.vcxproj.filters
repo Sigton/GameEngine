@@ -799,6 +799,7 @@
       <Filter>vendor\glm\glm\virtrev</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Renderer\PerspectiveCamera.h" />
+    <ClInclude Include="src\GameEngine\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -865,5 +866,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\GameEngine\Renderer\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\GameEngine\Transform.cpp" />
   </ItemGroup>
 </Project>
