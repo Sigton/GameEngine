@@ -18,13 +18,15 @@ namespace GameEngine {
 		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(GE_BIND_EVENT_FN(Application::OnEvent));
 
+		Renderer::Init();
+
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
 	{
-
+		Renderer::Shutdown();
 	}
 
 	void Application::OnEvent(Event& e)

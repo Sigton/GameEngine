@@ -3,6 +3,16 @@
 
 namespace GameEngine {
 
+	void Renderer::Init()
+	{
+
+	}
+
+	void Renderer::Shutdown()
+	{
+
+	}
+
 	void Renderer::BeginScene()
 	{
 	}

@@ -11,6 +11,9 @@ namespace GameEngine {
 	class Renderer
 	{
 	public:
+		static void Init();
+		static void Shutdown();
+
 		static void BeginScene();
 		static void EndScene();
 
