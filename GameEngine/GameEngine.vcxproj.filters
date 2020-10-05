@@ -46,6 +46,9 @@
     <Filter Include="vendor\glm\glm\virtrev">
       <UniqueIdentifier>{F2938718-DE8D-B06A-C7FA-467BB39316D7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameEngine.h">
@@ -96,6 +99,9 @@
     <ClInclude Include="src\GameEngine\Renderer\GraphicsContext.h">
       <Filter>src\GameEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\GameEngine\Renderer\PerspectiveCamera.h">
+      <Filter>src\GameEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\GameEngine\Renderer\RenderCommand.h">
       <Filter>src\GameEngine\Renderer</Filter>
     </ClInclude>
@@ -110,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="src\GameEngine\Renderer\VertexArray.h">
       <Filter>src\GameEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Transform.h">
+      <Filter>src\GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Window.h">
       <Filter>src\GameEngine</Filter>
@@ -798,8 +807,9 @@
     <ClInclude Include="vendor\glm\glm\virtrev\xstream.hpp">
       <Filter>vendor\glm\glm\virtrev</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Renderer\PerspectiveCamera.h" />
-    <ClInclude Include="src\GameEngine\Transform.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
@@ -826,6 +836,9 @@
     <ClCompile Include="src\GameEngine\Renderer\GraphicsContext.cpp">
       <Filter>src\GameEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Renderer\PerspectiveCamera.cpp">
+      <Filter>src\GameEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\GameEngine\Renderer\RenderCommand.cpp">
       <Filter>src\GameEngine\Renderer</Filter>
     </ClCompile>
@@ -840,6 +853,9 @@
     </ClCompile>
     <ClCompile Include="src\GameEngine\Renderer\VertexArray.cpp">
       <Filter>src\GameEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Transform.cpp">
+      <Filter>src\GameEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\GameEngine\Window.cpp">
       <Filter>src\GameEngine</Filter>
@@ -865,7 +881,8 @@
     <ClCompile Include="src\gepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Renderer\PerspectiveCamera.cpp" />
-    <ClCompile Include="src\GameEngine\Transform.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
