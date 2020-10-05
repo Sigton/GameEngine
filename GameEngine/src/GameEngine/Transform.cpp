@@ -30,6 +30,12 @@ namespace GameEngine {
 		RecalculateMatrix();
 	}
 
+	Transform::Transform(const Transform& transform)
+		: m_Position(transform.GetPosition()), m_Rotation(transform.GetRotation()), m_Scale(transform.GetScale())
+	{
+		RecalculateMatrix();
+	}
+
 	void Transform::RecalculateMatrix()
 	{
 		glm::mat4 pos = glm::translate(glm::mat4(1), m_Position);

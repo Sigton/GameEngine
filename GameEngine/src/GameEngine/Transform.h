@@ -11,6 +11,7 @@ namespace GameEngine {
 		Transform(const glm::vec3& position);
 		Transform(const glm::vec3& position, const glm::vec3& rotation);
 		Transform(const glm::vec3& position, const glm::vec3& rotation, const glm::vec3& scale);
+		Transform(const Transform& transform);
 
 		inline const glm::vec3& GetPosition() const { return m_Position; }
 		inline const glm::vec3& GetRotation() const { return m_Rotation; }
