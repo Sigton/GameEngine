@@ -2,13 +2,16 @@
 
 #include "GameEngine/Renderer/Shader.h"
 
+#include <glad/glad.h>
+
 
 namespace GameEngine {
 
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource);
+		OpenGLShader(const std::string& path);
+		OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource);
 		~OpenGLShader();
 
 		virtual void Bind() const override;
@@ -27,9 +30,14 @@ namespace GameEngine {
 		void UploadUniformFloat3(const std::string& name, const glm::vec3& value);
 		void UploadUniformFloat4(const std::string& name, const glm::vec4& value);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+	private:
+		std::string ReadFile(const std::string& path);
+		std::unordered_map<GLenum, std::string> Preprocess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& sources);
 
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 
 }
