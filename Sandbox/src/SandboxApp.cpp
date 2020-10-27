@@ -49,7 +49,7 @@ public:
 		// gen vertex array
 		m_VertexArray = GameEngine::VertexArray::Create();
 
-		std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
+		std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(cubeVertices, sizeof(cubeVertices));
 
 		GameEngine::BufferLayout layout = {
 			{ GameEngine::ShaderDataType::Float3, "a_Position"},
@@ -58,15 +58,14 @@ public:
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-		std::shared_ptr<GameEngine::IndexBuffer> indexBuffer = GameEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(unsigned int));
+		std::shared_ptr<GameEngine::IndexBuffer> indexBuffer = GameEngine::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(unsigned int));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_Shader = GameEngine::Shader::Create("assets/shaders/Texture.glsl");
+		m_Shader = GameEngine::Shader::Create("assets/shaders/BasicDiffuse.glsl");
 
-		m_Texture = GameEngine::Texture2D::Create("assets/textures/smile.png");
-
-		m_Shader->Bind();
-		m_Shader->SetInt("u_Texture", 0);
+		//m_Texture = GameEngine::Texture2D::Create("assets/textures/smile.png");
+		//m_Shader->Bind();
+		//m_Shader->SetInt("u_Texture", 0);
 
 		m_Camera = std::make_shared<GameEngine::PerspectiveCamera>();
 		m_CameraPosition = glm::vec3(0.0f, 0.0f, 5.0f);
@@ -99,7 +98,8 @@ public:
 
 
 		// SUBMIT TO RENDERER
-		m_Texture->Bind();
+		// m_Texture->Bind();
+		m_Shader->SetFloat3("u_LightPos", m_LightPos);
 		GameEngine::Renderer::Submit(m_Shader, m_VertexArray, m_Transform);
 
 
@@ -134,6 +134,17 @@ public:
 		}
 
 		ImGui::End();
+
+
+		ImGui::Begin("Light Controls");
+		ImGui::SliderFloat3("Light Position", glm::value_ptr(m_LightPos), -8.0f, 8.0f);
+
+		if (ImGui::Button("Reset"))
+		{
+			m_LightPos = glm::vec3(0);
+		}
+
+		ImGui::End();
 	}
 
 private:
@@ -150,6 +161,8 @@ private:
 	glm::vec3 m_SquarePosition;
 	glm::vec3 m_SquareRotation;
 	glm::vec3 m_SquareScale;
+
+	glm::vec3 m_LightPos;
 };
 
 

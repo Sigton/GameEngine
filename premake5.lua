@@ -15,6 +15,8 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/GameEngine/vendor/GLFW/include"
 IncludeDir["ImGui"] = "%{wks.location}/GameEngine/vendor/imgui"
 IncludeDir["Glad"] = "%{wks.location}/GameEngine/vendor/Glad/include"
+IncludeDir["glm"] = "%{wks.location}/GameEngine/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/GameEngine/vendor/stb_image"
 
 group "Dependencies"
     include "GameEngine/vendor/GLFW"
