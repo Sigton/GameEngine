@@ -1,2 +1,0 @@
-D:\dev\GameEngine\bin\Debug-windows-x86_64\GameEngine\GameEngine.pdb
-D:\dev\GameEngine\bin-int\Debug-windows-x86_64\GameEngine\GameEngine.pdb
