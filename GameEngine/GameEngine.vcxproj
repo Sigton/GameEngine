@@ -149,6 +149,7 @@
     <ClInclude Include="src\GameEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\GameEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\GameEngine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\GameEngine\Input.h" />
     <ClInclude Include="src\GameEngine\KeyCodes.h" />
     <ClInclude Include="src\GameEngine\Layer.h" />
     <ClInclude Include="src\GameEngine\LayerStack.h" />

@@ -812,6 +812,7 @@
     </ClInclude>
     <ClInclude Include="src\GameEngine\Renderer\Texture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\GameEngine\Input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">
