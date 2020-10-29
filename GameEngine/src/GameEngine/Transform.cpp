@@ -45,4 +45,19 @@ namespace GameEngine {
 		m_Matrix = pos * rot * scale;
 	}
 
+	const glm::vec3& Transform::GetForward() const
+	{
+		return glm::vec3(glm::orientate4(glm::vec3(m_Rotation.x, m_Rotation.z, m_Rotation.y)) * glm::vec4(0.0f, 0.0f, 1.0f, 0.0f));
+	}
+
+	const glm::vec3& Transform::GetRight() const
+	{
+		return glm::vec3(glm::orientate4(glm::vec3(m_Rotation.x, m_Rotation.z, m_Rotation.y)) * glm::vec4(1.0f, 0.0f, 0.0f, 0.0f));
+	}
+
+	const glm::vec3& Transform::GetUp() const
+	{
+		return glm::vec3(glm::orientate4(glm::vec3(m_Rotation.x, m_Rotation.z, m_Rotation.y)) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f));
+	}
+
 }

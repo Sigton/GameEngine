@@ -17,11 +17,17 @@ namespace GameEngine {
 		inline const glm::vec3& GetRotation() const { return m_Rotation; }
 		inline const glm::vec3& GetScale() const { return m_Scale; }
 
-		inline void SetPosition(glm::vec3& position) { m_Position = position; RecalculateMatrix(); }
-		inline void SetRotation(glm::vec3& rotation) { m_Rotation = rotation; RecalculateMatrix(); }
-		inline void SetScale(glm::vec3& scale) { m_Scale = scale; RecalculateMatrix(); }
+		inline void SetPosition(glm::vec3& position) { m_Position = position; }
+		inline void SetRotation(glm::vec3& rotation) { m_Rotation = rotation; }
+		inline void SetScale(glm::vec3& scale) { m_Scale = scale; }
 
-		inline const glm::mat4& GetMatrix() const { return m_Matrix; }
+		inline const glm::mat4& GetLocalToWorldMatrix() { RecalculateMatrix(); return m_Matrix; }
+		inline const glm::mat4& GetWorldToLocalMatrix() { RecalculateMatrix(); return glm::inverse(m_Matrix); }
+
+		const glm::vec3& GetForward() const;
+		const glm::vec3& GetRight() const;
+		const glm::vec3& GetUp() const;
+
 	private:
 		void RecalculateMatrix();
 
