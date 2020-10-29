@@ -12,6 +12,61 @@ public:
 	GameLayer()
 		: Layer("Game Layer")
 	{
+		// cube with normals
+		float cubeVertices2[4 * 6 * (3 + 3)] = { // num vertices per side * num sides * (components of position + components of normal)
+			// front side
+			-1.0f,  1.0f,  1.0f,		 0.0f,  0.0f,  1.0f,
+			 1.0f,  1.0f,  1.0f,		 0.0f,  0.0f,  1.0f,
+			-1.0f, -1.0f,  1.0f,		 0.0f,  0.0f,  1.0f,
+			 1.0f, -1.0f,  1.0f,		 0.0f,  0.0f,  1.0f,
+			// back side	 		 	   
+			 1.0f,  1.0f, -1.0f,		 0.0f,  0.0f, -1.0f,
+			-1.0f,  1.0f, -1.0f,		 0.0f,  0.0f, -1.0f,
+			 1.0f, -1.0f, -1.0f,		 0.0f,  0.0f, -1.0f,
+			-1.0f, -1.0f, -1.0f,		 0.0f,  0.0f, -1.0f,
+			// top side		 		 	   
+			-1.0f,  1.0f, -1.0f,		 0.0f,  1.0f,  0.0f,
+			 1.0f,  1.0f, -1.0f,		 0.0f,  1.0f,  0.0f,
+			-1.0f,  1.0f,  1.0f,		 0.0f,  1.0f,  0.0f,
+			 1.0f,  1.0f,  1.0f,		 0.0f,  1.0f,  0.0f,
+			// bottom side 			 		 		   
+			-1.0f, -1.0f,  1.0f,		 0.0f, -1.0f,  0.0f,
+			 1.0f, -1.0f,  1.0f,		 0.0f, -1.0f,  0.0f,
+			-1.0f, -1.0f, -1.0f,		 0.0f, -1.0f,  0.0f,
+			 1.0f, -1.0f, -1.0f,		 0.0f, -1.0f,  0.0f,
+			// left side	 		 		 	 	   
+			-1.0f,  1.0f, -1.0f,		-1.0f,  0.0f,  0.0f,
+			-1.0f,  1.0f,  1.0f,		-1.0f,  0.0f,  0.0f,
+			-1.0f, -1.0f, -1.0f,		-1.0f,  0.0f,  0.0f,
+			-1.0f, -1.0f,  1.0f,		-1.0f,  0.0f,  0.0f,
+			// right side 			 	 	 	   
+			 1.0f,  1.0f,  1.0f,		 1.0f,  0.0f,  0.0f,
+			 1.0f,  1.0f, -1.0f,		 1.0f,  0.0f,  0.0f,
+			 1.0f, -1.0f,  1.0f,		 1.0f,  0.0f,  0.0f,
+			 1.0f, -1.0f, -1.0f,		 1.0f,  0.0f,  0.0f,
+		};
+
+		unsigned int cubeIndices2[6 * 6] = {
+			// front
+			0, 2, 3,
+			0, 3, 1,
+			// back
+			4, 6, 7,
+			4, 7, 5,
+			// top
+			8, 10, 11,
+			8, 11, 9,
+			// bottom
+			12, 14, 15,
+			12, 15, 13,
+			// left
+			16, 18, 19,
+			16, 19, 17,
+			// right
+			20, 22, 23,
+			20, 23, 21,
+		};
+		/*
 		// define geometry and indices
 		float cubeVertices[8 * (3 + 2)] = {
 			-1.0f,	 1.0f,	 -1.0f,		0.0f, 1.0f,
@@ -45,20 +100,20 @@ public:
 		{
 			0, 3, 1, 0, 2, 3
 		};
-
+		*/
 		// gen vertex array
 		m_VertexArray = GameEngine::VertexArray::Create();
 
-		std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(cubeVertices, sizeof(cubeVertices));
+		std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(cubeVertices2, sizeof(cubeVertices2));
 
 		GameEngine::BufferLayout layout = {
 			{ GameEngine::ShaderDataType::Float3, "a_Position"},
-			{ GameEngine::ShaderDataType::Float2, "a_TextureCoords"}
+			{ GameEngine::ShaderDataType::Float3, "a_Normal"}
 		};
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-		std::shared_ptr<GameEngine::IndexBuffer> indexBuffer = GameEngine::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(unsigned int));
+		std::shared_ptr<GameEngine::IndexBuffer> indexBuffer = GameEngine::IndexBuffer::Create(cubeIndices2, sizeof(cubeIndices2) / sizeof(unsigned int));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_Shader = GameEngine::Shader::Create("assets/shaders/BasicDiffuse.glsl");
@@ -105,6 +160,17 @@ public:
 
 		// END RENDERING SCENE
 		GameEngine::Renderer::EndScene();
+	}
+
+	virtual void OnEvent(GameEngine::Event& event)
+	{
+		GameEngine::EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<GameEngine::KeyPressedEvent>(GE_BIND_EVENT_FN(OnKey));
+	}
+
+	bool OnKey(GameEngine::KeyPressedEvent& KeyEvent)
+	{
+		return false;
 	}
 
 	virtual void OnImGuiRender() override
