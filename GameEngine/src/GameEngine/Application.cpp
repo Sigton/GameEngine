@@ -4,7 +4,9 @@
 #include "GameEngine/Core.h"
 
 #include "GameEngine/Log.h"
+#include "GameEngine/Timestep.h"
 
+#include <GLFW/glfw3.h>
 
 namespace GameEngine {
 
@@ -80,10 +82,15 @@ namespace GameEngine {
 	{
 		while (m_Running)
 		{
+			// TIMESTEPS
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			// UPDATE LAYERS
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

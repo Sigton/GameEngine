@@ -24,7 +24,7 @@ namespace GameEngine {
 		static float GetMouseDeltaX();
 		static float GetMouseDeltaY();
 	private:
-		static glm::vec2 s_OldMousePosition;
+		inline static glm::vec2 s_OldMousePosition{0, 0};
 	};
 
 }

@@ -36,7 +36,7 @@ namespace GameEngine {
 
 	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Transform>& transform)
 	{
-		Submit(shader, vertexArray, transform->GetMatrix());
+		Submit(shader, vertexArray, transform->GetLocalToWorldMatrix());
 	}
 
 }
