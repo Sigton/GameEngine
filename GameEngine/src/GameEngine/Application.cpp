@@ -20,6 +20,8 @@ namespace GameEngine {
 
 		Renderer::Init();
 
+		Input::Init();
+
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 	}
@@ -89,6 +91,7 @@ namespace GameEngine {
 			m_ImGuiLayer->End();
 			
 
+			Input::OnUpdate();
 			m_Window->OnUpdate();
 		}
 	}

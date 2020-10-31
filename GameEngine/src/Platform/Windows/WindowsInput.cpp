@@ -6,6 +6,16 @@
 
 namespace GameEngine {
 
+	void Input::Init()
+	{
+		s_OldMousePosition = GetMousePosition();
+	}
+
+	void Input::OnUpdate()
+	{
+		s_OldMousePosition = GetMousePosition();
+	}
+
 	bool Input::IsKeyPressed(const KeyCode key)
 	{
 		auto* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
@@ -37,6 +47,21 @@ namespace GameEngine {
 	float Input::GetMouseY()
 	{
 		return GetMousePosition().y;
+	}
+
+	glm::vec2 Input::GetMouseDelta()
+	{
+		return GetMousePosition() - s_OldMousePosition;
+	}
+
+	float Input::GetMouseDeltaX()
+	{
+		return GetMouseDelta().x;
+	}
+
+	float Input::GetMouseDeltaY()
+	{
+		return GetMouseDelta().y;
 	}
 
 }

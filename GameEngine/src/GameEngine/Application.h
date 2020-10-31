@@ -7,6 +7,8 @@
 #include "GameEngine/Events/Event.h"
 #include "GameEngine/Events/ApplicationEvent.h"
 
+#include "GameEngine/Input.h"
+
 #include "GameEngine/LayerStack.h"
 #include "GameEngine/ImGui/ImGuiLayer.h"
 
