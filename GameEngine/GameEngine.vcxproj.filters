@@ -813,6 +813,7 @@
     <ClInclude Include="src\GameEngine\Renderer\Texture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\GameEngine\Input.h" />
+    <ClInclude Include="src\GameEngine\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GameEngine\Application.cpp">

@@ -164,6 +164,7 @@
     <ClInclude Include="src\GameEngine\Renderer\Shader.h" />
     <ClInclude Include="src\GameEngine\Renderer\Texture.h" />
     <ClInclude Include="src\GameEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\GameEngine\Timestep.h" />
     <ClInclude Include="src\GameEngine\Transform.h" />
     <ClInclude Include="src\GameEngine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
