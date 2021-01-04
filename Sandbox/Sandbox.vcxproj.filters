@@ -21,6 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\Texture.glsl" />
-    <None Include="assets\shaders\BasicDiffuse.glsl" />
+    <None Include="assets\shaders\BasicLit.glsl" />
   </ItemGroup>
 </Project>

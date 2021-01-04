@@ -116,7 +116,7 @@ public:
 			m_PlaneVertexArray->SetIndexBuffer(indexBuffer);
 		}
 
-		m_Shader = GameEngine::Shader::Create("assets/shaders/BasicDiffuse.glsl");
+		m_Shader = GameEngine::Shader::Create("assets/shaders/BasicLit.glsl");
 
 		//m_Texture = GameEngine::Texture2D::Create("assets/textures/smile.png");
 		//m_Shader->Bind();
@@ -144,15 +144,20 @@ public:
 	{
 
 		// camera controlled by the mouse
+		/*
 		glm::vec2 md = GameEngine::Input::GetMouseDelta();
 		md *= m_CameraSensitivity * m_CameraSmoothing;
 		m_CameraSmoothVector = glm::mix(m_CameraSmoothVector, md, 1.0f / m_CameraSmoothing);
 		m_MouseLook += m_CameraSmoothVector;
 
 		m_CameraRotation = glm::vec3(-glm::radians(m_MouseLook.y), -glm::radians(m_MouseLook.x), 0);
+		*/
 
+		m_LightMovementTimer += ts;
+		m_LightMovementTimer = fmod(m_LightMovementTimer, 6.283f);
+		m_LightPos = 6.0f * glm::vec3(glm::cos(m_LightMovementTimer), 0.5f, sin(m_LightMovementTimer));
 
-		m_SquareRotation += (float)ts * glm::vec3(1, 2, 3);
+		//m_SquareRotation += 0.2f * (float)ts * glm::vec3(1, 2, 3);
 
 
 		m_Camera->SetPosition(m_CameraPosition);
@@ -163,7 +168,7 @@ public:
 		m_Transform->SetScale(m_SquareScale);
 
 		// CLEAR FROM LAST FRAME
-		GameEngine::RenderCommand::SetClearColor(glm::vec4(0.2f, 0.2f, 0.2f, 1));
+		GameEngine::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
 		GameEngine::RenderCommand::Clear();
 
 
@@ -174,7 +179,13 @@ public:
 		// SUBMIT TO RENDERER
 		// m_Texture->Bind();
 		m_Shader->SetFloat3("u_LightPos", m_LightPos);
+		m_Shader->SetFloat3("u_LightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+		m_Shader->SetFloat3("u_ViewPos", m_CameraPosition);
+
+		m_Shader->SetFloat3("u_ObjectColor", glm::vec3(0.0f, 1.0f, 0.0f));
 		GameEngine::Renderer::Submit(m_Shader, m_VertexArray, m_Transform);
+
+		m_Shader->SetFloat3("u_ObjectColor", glm::vec3(1.0f, 0.0f, 0.0f));
 		GameEngine::Renderer::Submit(m_Shader, m_PlaneVertexArray, m_PlaneTransform);
 
 
@@ -260,6 +271,8 @@ private:
 	float m_CameraSmoothing = 1;
 	glm::vec2 m_CameraSmoothVector;
 	glm::vec2 m_MouseLook;
+
+	float m_LightMovementTimer = 0;
 };
 
 
