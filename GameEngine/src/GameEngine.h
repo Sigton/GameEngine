@@ -22,5 +22,7 @@
 #include "GameEngine/Renderer/Shader.h"
 #include "GameEngine/Renderer/VertexArray.h"
 
+#include "GameEngine/Renderer/Mesh.h"
+
 #include "GameEngine/Renderer/PerspectiveCamera.h"
 // -----------------------------------

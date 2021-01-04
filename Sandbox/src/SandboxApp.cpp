@@ -68,20 +68,24 @@ public:
 				20, 23, 21
 			};
 
-			// gen vertex array
-			m_VertexArray = GameEngine::VertexArray::Create();
-
-			std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(cubeVertices, sizeof(cubeVertices));
-
 			GameEngine::BufferLayout layout = {
 				{ GameEngine::ShaderDataType::Float3, "a_Position"},
 				{ GameEngine::ShaderDataType::Float3, "a_Normal"}
 			};
+			// gen vertex array
+			/*
+			m_VertexArray = GameEngine::VertexArray::Create();
+
+			std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer = GameEngine::VertexBuffer::Create(cubeVertices, sizeof(cubeVertices));
+			
 			vertexBuffer->SetLayout(layout);
 			m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 			std::shared_ptr<GameEngine::IndexBuffer> indexBuffer = GameEngine::IndexBuffer::Create(cubeIndices, sizeof(cubeIndices) / sizeof(unsigned int));
 			m_VertexArray->SetIndexBuffer(indexBuffer);
+			*/
+			
+			m_Mesh.reset(new GameEngine::Mesh(layout, cubeVertices, sizeof(cubeVertices), cubeIndices, sizeof(cubeIndices) / sizeof(unsigned int)));
 		}
 
 		{
@@ -183,7 +187,7 @@ public:
 		m_Shader->SetFloat3("u_ViewPos", m_CameraPosition);
 
 		m_Shader->SetFloat3("u_ObjectColor", glm::vec3(0.0f, 1.0f, 0.0f));
-		GameEngine::Renderer::Submit(m_Shader, m_VertexArray, m_Transform);
+		GameEngine::Renderer::Submit(m_Shader, m_Mesh->GetVerterxArray(), m_Transform);
 
 		m_Shader->SetFloat3("u_ObjectColor", glm::vec3(1.0f, 0.0f, 0.0f));
 		GameEngine::Renderer::Submit(m_Shader, m_PlaneVertexArray, m_PlaneTransform);
@@ -247,7 +251,8 @@ public:
 	}
 
 private:
-	std::shared_ptr<GameEngine::VertexArray> m_VertexArray;
+	// std::shared_ptr<GameEngine::VertexArray> m_VertexArray;
+	std::shared_ptr<GameEngine::Mesh> m_Mesh;
 	std::shared_ptr<GameEngine::Shader> m_Shader;
 
 	std::shared_ptr<GameEngine::VertexArray> m_PlaneVertexArray;
